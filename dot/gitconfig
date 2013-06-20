@@ -1,0 +1,41 @@
+[user]
+        name = Jarrod Millman
+        email = jarrod.millman@gmail.com
+[github]
+        user = jarrodmillman
+
+[alias]
+        ci = commit -a
+        co = checkout
+        st = status -a
+        br = branch
+        ltag = tag -l -n3
+        track = !git-track
+        wdiff = diff --color-words
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit --date=relative
+
+[apply]
+        whitespace = strip
+
+[diff]
+        color = auto
+        rename = copy
+
+[pager]
+        color = true
+
+[status]
+        color = auto
+
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+
+[core]
+	editor = vim
+[merge]
+        summary = true
+
+[push]
+	default = matching

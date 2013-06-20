@@ -1,0 +1,39 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+pushdp () {
+ pushd "$(python -c "import os.path as _, ${1}; \
+   print _.dirname(_.realpath(${1}.__file__[:-1]))"
+ )"
+}
+
+MYBIN=$HOME/usr/bin
+
+export EDITOR=vim
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+source $MYBIN/bash_completion_tmux.sh
+export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+alias ipconsole='ipython-qtconsole --paging hsplit --pylab qt'
+
+# history settings
+#export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTCONTROL=ignoredups            # no duplicate entries
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Set prefix for local installs of various projects, mostly python ones
+export PYPREFIX=$HOME/usr/local
+export PYTHON=python2.7
+export PYPATH=lib/$PYTHON/site-packages
+export PYPATH64=lib64/$PYTHON/site-packages
+
+export PYTHONPATH=$HOME/usr/$PYPATH:$HOME/usr/$PYPATH64:$PYPREFIX/$PYPATH:$PYPREFIX/$PYPATH64:
+
+export PATH=:$MYBIN:$HOME/usr/local/bin:$PYPREFIX/bin:$PATH:
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PYPREFIX/lib
+
+export R_LIBS="$HOME/usr/lib64/R/library"
